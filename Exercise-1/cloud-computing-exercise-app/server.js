@@ -43,16 +43,19 @@ app.get('/api', (req, res) => {
       {method: 'GET', path: '/api/profile', description: 'Data about me'},
       {method: 'GET', path: '/api/books/', description: 'Get All books information'},
       // TODO: Write other API end-points description here like above
+      {method: 'POST', path: '/api/books/', description: 'Post a new book information'},
+      {method: 'PUT', path: '/api/books/:id', description: 'Update the book information'},
+      {method: 'DELETE', path: '/api/books/:id', description: 'Delete the book information'},
     ]
   })
 });
 // TODO:  Fill the values
 app.get('/api/profile', (req, res) => {
   res.json({
-    'name': '',
-    'homeCountry': '',
-    'degreeProgram': '',//informatics or CSE.. etc
-    'email': '',
+    'name': 'Beyza',
+    'homeCountry': 'Turkey',
+    'degreeProgram': 'Informatics',//informatics or CSE.. etc
+    'email': 'beyza@gmail.com',
     'deployedURLLink': '',//leave this blank for the first exercise
     'apiDocumentationURL': '', //leave this also blank for the first exercise
     'currentCity': '',
@@ -91,8 +94,18 @@ app.post('/api/books/', (req, res) => {
   /*
    * return the new book information object as json
    */
-  var newBook = {};
-  res.json(newBook);
+  let newBook = new db.books();
+  newBook.title = req.body.title;
+  newBook.author = req.body.author;
+  newBook.releaseDate = req.body.releaseDate;
+
+  newBook.save(err => {
+    if(err)
+      res.json(err);
+    else
+      res.json(newBook);
+  });
+  //res.json(newBook);
 });
 
 /*
@@ -112,9 +125,28 @@ app.put('/api/books/:id', (req, res) => {
   /*
    * Send the updated book information as a JSON object
    */
-  var updatedBookInfo = {};
-  res.json(updatedBookInfo);
+  db.books.findById(bookId, function (err, updatedBook) {
+    if (err)
+      res.send(err);
+
+    updatedBook.title = bookNewData.title;
+    updatedBook.author = bookNewData.author;
+    updatedBook.releaseDate = bookNewData.releaseDate;
+    updatedBook.genre = bookNewData.genre;
+    updatedBook.rating = bookNewData.rating;
+    updatedBook.language = bookNewData.language;
+
+    updatedBook.save(err => {
+      if (err)
+        res.json(err);
+      else
+        res.json(updatedBook);
+    });
+  });
+  //var updatedBookInfo = {};
+  //res.json(updatedBookInfo);
 });
+
 /*
  * Delete a book based upon the specified ID
  */
@@ -130,8 +162,18 @@ app.delete('/api/books/:id', (req, res) => {
   /*
    * Send the deleted book information as a JSON object
    */
-  var deletedBook = {};
-  res.json(deletedBook);
+  db.books.findByIdAndDelete(bookId, function (err, deletedBook) {
+    if (err)
+      res.send(err);
+
+    deletedBook.save(err => {
+      if (err)
+        res.json(err);
+      res.json(deletedBook);
+    });
+  });
+  //var deletedBook = {};
+  //res.json(deletedBook);
 });
 
 
