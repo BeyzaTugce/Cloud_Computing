@@ -52,14 +52,14 @@ app.get('/api', (req, res) => {
 // TODO:  Fill the values
 app.get('/api/profile', (req, res) => {
   res.json({
-    'name': 'Beyza',
+    'name': 'Beyza Tugce Bilgic',
     'homeCountry': 'Turkey',
     'degreeProgram': 'Informatics',//informatics or CSE.. etc
-    'email': 'beyza@gmail.com',
+    'email': 'beyza.bilgic@tum.de',
     'deployedURLLink': '',//leave this blank for the first exercise
     'apiDocumentationURL': '', //leave this also blank for the first exercise
-    'currentCity': '',
-    'hobbies': []
+    'currentCity': 'Munich',
+    'hobbies': ["sport"]
 
   })
 });
