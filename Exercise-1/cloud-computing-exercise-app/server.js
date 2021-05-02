@@ -98,6 +98,9 @@ app.post('/api/books/', (req, res) => {
   newBook.title = req.body.title;
   newBook.author = req.body.author;
   newBook.releaseDate = req.body.releaseDate;
+  newBook.genre = req.body.genre;
+  newBook.rating = req.body.rating;
+  newBook.language = req.body.language;
 
   newBook.save(err => {
     if(err)
@@ -166,10 +169,17 @@ app.delete('/api/books/:id', (req, res) => {
     if (err)
       res.send(err);
 
+    if (!req.body.id) {
+      return res.status(400).json({
+        status: 'error',
+        error: 'no id found',
+      });
+    }
+
     deletedBook.save(err => {
       if (err)
         res.json(err);
-      res.json(deletedBook);
+      res.json({message: "deleted"});
     });
   });
   //var deletedBook = {};
