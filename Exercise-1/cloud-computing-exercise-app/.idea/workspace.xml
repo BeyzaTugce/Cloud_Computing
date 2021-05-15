@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce6d9c4e-a25a-4d7b-bb74-248b825ae79f" name="Default Changelist" comment="delete api call corrected">
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-    </list>
+    <list default="true" id="ce6d9c4e-a25a-4d7b-bb74-248b825ae79f" name="Default Changelist" comment="delete api call corrected" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619398364630</updated>
       <workItem from="1619398365773" duration="18958000" />
-      <workItem from="1619964631663" duration="3656000" />
+      <workItem from="1619964631663" duration="3911000" />
     </task>
     <task id="LOCAL-00001" summary="api calls added to backend server">
       <created>1619633198187</created>
