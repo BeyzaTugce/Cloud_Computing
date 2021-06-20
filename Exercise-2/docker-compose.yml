@@ -2,8 +2,8 @@ version: '3'
 services:
   server:
     build: ./server
-    image: HUB_ID/cloudcomputinggroup#:latest
-    container_name: cloudcomputinggroup#
+    image: group181/cloudcomputinggroup181:latest
+    container_name: cloudcomputinggroup181
     depends_on:
       - "mongodb"
     environment:
